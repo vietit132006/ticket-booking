@@ -1,0 +1,27 @@
+node_modules/
+dist/
+build/
+coverage/
+*.log
+.DS_Store
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+.npmrc
+.netrc
+.aws/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+
+# Local editor and agent state
+.idea/
+.vscode/
+.codex/
+.agents/
