@@ -25,6 +25,28 @@ npm ci
 npm --prefix client ci
 ```
 
+### Cấu hình môi trường
+
+File mẫu chung cho dự án: [`.env.example`](./.env.example).
+Mã ứng dụng hiện không đọc biến môi trường (`process.env` hoặc `import.meta.env`)
+và không có giá trị bắt buộc phải cấu hình. File mẫu chỉ chứa chú thích về các
+địa chỉ chạy local an toàn. Có thể tạo bản cấu hình cá nhân từ thư mục gốc:
+
+```sh
+cp .env.example .env
+```
+
+Bước này **tùy chọn**, ứng dụng vẫn chạy khi không có `.env`. Backend hiện
+không tự nạp `.env`; Frontend không đọc biến `VITE_*`, nên chưa cần file mẫu
+riêng trong `client/`. Sửa `.env` chưa làm thay đổi cổng hoặc địa chỉ API.
+Cấu hình hiện nằm tại `src/server.js` (Backend cổng 3000) và
+`client/vite.config.js` (Frontend cổng 5173, proxy `/api` đến Backend cổng 3000).
+
+Git bỏ qua `.env` và `.env.*` ở mọi thư mục, ngoại trừ `.env.example` để có thể
+commit file mẫu. Chỉ đưa hướng dẫn và giá trị an toàn vào file mẫu.
+
+### Khởi động ứng dụng
+
 Terminal 1 — Backend:
 
 ```sh
